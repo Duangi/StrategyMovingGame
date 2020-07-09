@@ -47,3 +47,12 @@ TagManager:
   - name: Foreground
     uniqueID: 3185624819
     locked: 0
+  - name: DamageIcon
+    uniqueID: 2557751571
+    locked: 0
+  - name: UI
+    uniqueID: 2757535677
+    locked: 0
+  - name: Cursor
+    uniqueID: 3415568283
+    locked: 0

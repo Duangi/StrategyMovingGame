@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: e133ca44fd5dabe488dcca93ef229e63
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 553884121995667778
+    second: BlueKing_0
+  - first:
+      213: -7530631117008270979
+    second: BlueKing_1
+  - first:
+      213: 7098072395754262308
+    second: BlueKing_2
+  - first:
+      213: 5153016428005426923
+    second: BlueKing_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +83,129 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BlueKing_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 174
+        width: 111
+        height: 132
+      alignment: 9
+      pivot: {x: 0.89412034, y: 0.9342737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249e742acaacfa700800000000000000
+      internalID: 553884121995667778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueKing_1
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 192
+        width: 124
+        height: 136
+      alignment: 9
+      pivot: {x: 0.11070227, y: 0.93259275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d790838e5e2dd7790800000000000000
+      internalID: -7530631117008270979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueKing_2
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 83
+        width: 427
+        height: 337
+      alignment: 9
+      pivot: {x: 0.50353277, y: 0.11503411}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f40fa9c3b618260800000000000000
+      internalID: 7098072395754262308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueKing_3
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 91
+        width: 658
+        height: 496
+      alignment: 9
+      pivot: {x: 0.50458527, y: 0.019460447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be60401b321338740800000000000000
+      internalID: 5153016428005426923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

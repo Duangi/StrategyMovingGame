@@ -3,7 +3,11 @@ guid: cbd33f6b9d0e44a47a7962ab5ab1c718
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - weaponIcon: {instanceID: 0}
+  - damageIcon: {fileID: 217652487, guid: f66f529792745244694f86d8b41be88a, type: 3}
+  - deathEffect: {fileID: 7953367499307600658, guid: 786516a2b4c5324458231e6e08fa6d4f,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

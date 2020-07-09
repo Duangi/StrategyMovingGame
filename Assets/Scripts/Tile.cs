@@ -80,9 +80,12 @@ public class Tile : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
     public void OnMouseDown(){
-        if(canWalk && GameManager.instance.selectedUnit != null){
-            GameManager.instance.selectedUnit.Move(this.transform);
+        if(GameManager.instance.selectedUnit != null){
+            if(!GameManager.instance.selectedUnit.hasMoved && canWalk){
+                GameManager.instance.selectedUnit.Move(this.transform);
+            }
         }
+        
     }
 
     
