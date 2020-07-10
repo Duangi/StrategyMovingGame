@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameMaster : MonoBehaviour
 {
     
-    public static GameManager instance;//gm实例
     
     public Tile[] tiles;//存储所有的tile
     
-    [HideInInspector]public Unit selectedUnit;//被选中的角色
+    public Unit selectedUnit;//被选中的角色
 
-    [HideInInspector]public int playerTurn = 1;
+    public int playerTurn = 1;
 
     [SerializeField] private GameObject selectedUnitSquare;//selectedUnit高亮提示框
     
@@ -41,27 +40,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text defenseDamageText;
 
     [SerializeField] private Button TurnButton;
+
+    GameMaster gm;
     private void Awake(){
         //如果一开始GameManager未赋值，则将该gameObject作为manager
-        if(instance == null){
-            instance = this;
-        }
+        // if(instance == null){
+        //     instance = this;
+        // }
 
-        else {
-            //确保manager只有一个
-            if(instance != this){
-                Destroy(gameObject);
-            }
-        }
-        //在当前的游戏设计中，不需要加上DontDestroyOnLoad
-        //如果加上了，ReStart重新加载当前场景时，其他的对象会被全部摧毁重建，而绑定在当前GameManager上的引用会因为对象被摧毁而丢失。
+        // else {
+        //     //确保manager只有一个
+        //     if(instance != this){
+        //         Destroy(gameObject);
+        //     }
+        // }
 
         
         //保证场景切换不会删掉manager
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start(){
+        gm = FindObjectOfType<GameMaster>();
+
         playerIndicator.sprite = player1Indicator; 
         GetGoldIncome(1);
         UpdateGoldText();
@@ -69,21 +70,24 @@ public class GameManager : MonoBehaviour
     }
     private void Update(){
 
-        //如果有被选择的角色，高亮框显示，修改为适应的颜色，并跟随角色移动
-        if(selectedUnit != null){
+        if(selectedUnitSquare != null){
+            if(selectedUnit != null){
             //当有角色正在移动的时候，直接点击切换切换回合按钮会导致奇怪的bug，因此设定当角色正在移动时，不能切换回合
-            if(selectedUnit.isMoving){
-                TurnButton.interactable = false;
-            }else{
-                TurnButton.interactable = true;
+                if(selectedUnit.isMoving){
+                    TurnButton.interactable = false;
+                }else{
+                    TurnButton.interactable = true;
+                }
+                selectedUnitSquare.SetActive(true);
+                selectedUnitSquare.GetComponent<SpriteRenderer>().color = selectedUnit.squareColor;
+                selectedUnitSquare.transform.position = selectedUnit.transform.position;
             }
-            selectedUnitSquare.SetActive(true);
-            selectedUnitSquare.GetComponent<SpriteRenderer>().color = selectedUnit.squareColor;
-            selectedUnitSquare.transform.position = selectedUnit.transform.position;
+            else {
+                selectedUnitSquare.SetActive(false);
+            }
         }
-        else {
-            selectedUnitSquare.SetActive(false);
-        }
+        //如果有被选择的角色，高亮框显示，修改为适应的颜色，并跟随角色移动
+        
 
         
     }
@@ -145,8 +149,8 @@ public class GameManager : MonoBehaviour
         UpdateGoldText();
     }
     public void ResetTiles(){
-        for(int i = 0;i<GameManager.instance.tiles.Length;i++){
-            GameManager.instance.tiles[i].ResetTile();
+        for(int i = 0;i<gm.tiles.Length;i++){
+            gm.tiles[i].ResetTile();
         }
     }
     public void EndTurn(){
