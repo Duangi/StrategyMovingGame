@@ -44,7 +44,6 @@ public class Tile : MonoBehaviour
 
     private void OnMouseExit(){
         transform.localScale -= Vector3.one *0.02f;
-        
         spriteRenderer.sortingOrder = 0;
     }
 
