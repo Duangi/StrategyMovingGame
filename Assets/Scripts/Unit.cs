@@ -39,7 +39,13 @@ public class Unit : MonoBehaviour
     //king的血量
     [SerializeField] private bool isKing;
     [SerializeField] private Text kingHealth;
+
+    public GameObject WinFlag;
+
+    //点击音效
+    private AudioSource audioSource;
     private void Start(){
+        audioSource = GetComponent<AudioSource>();
         camAnim = Camera.main.GetComponent<Animator>();
         UpdateKingHealth();
     }
@@ -51,6 +57,7 @@ public class Unit : MonoBehaviour
         if(playerNumber == GameManager.instance.playerTurn){
             GameManager.instance.selectedUnit = this;
             selected = true;
+            audioSource.Play();
             ResetTiles();
 
             GetEnemies();
@@ -105,6 +112,10 @@ public class Unit : MonoBehaviour
             Destroy(enemy.gameObject);
             ShowWalkableTiles();
             GameManager.instance.RemoveStatsPanel(enemy);
+
+            if(enemy.isKing){
+                enemy.WinFlag.SetActive(true);
+            }
         }
 
         if(health<=0){
@@ -112,6 +123,11 @@ public class Unit : MonoBehaviour
             ResetTiles();
             Destroy(gameObject);
             GameManager.instance.RemoveStatsPanel(this);
+            ShowWalkableTiles();
+
+            if(isKing){
+                WinFlag.SetActive(true);
+            }
         }
         GameManager.instance.UpdateStatsPanel();
 
@@ -134,7 +150,7 @@ public class Unit : MonoBehaviour
                     //当瓦片上没有障碍物，才能移动
                     if(!GameManager.instance.tiles[i].hasObstacles){
                         string s = "I'm in "+ (transform.position.x - GameManager.instance.tiles[i].transform.position.x) + ","+ (transform.position.y - GameManager.instance.tiles[i].transform.position.y) +" I can walk to";
-                        //Debug.Log(s);
+                        
                         GameManager.instance.tiles[i].canWalk = true;
                         GameManager.instance.tiles[i].HighLightTile();
                     }
