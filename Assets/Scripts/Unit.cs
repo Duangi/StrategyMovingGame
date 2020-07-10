@@ -169,9 +169,15 @@ public class Unit : MonoBehaviour
         //run动画结束
         GetComponent<Animator>().SetBool("isRunning",false);
 
+        
         //重新打开状态栏
-        GameManager.instance.ToggleStatsPanel(this);
-
+        if(GameManager.instance.viewedUnit != null){
+            if(GameManager.instance.viewedUnit.Equals(this)){
+                GameManager.instance.ToggleStatsPanel(this);
+            }
+        }
+        
+        
         ResetTiles();
         ShowWalkableTiles();
         ResetWeaponIcon();

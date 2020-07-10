@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour
         statsPanel.SetActive(false);
         viewedUnit = null;
     }
+    //暂时取消显示状态栏，在移动完成之后再显示
+    public void DisableStatsPanelTemp(){
+        statsPanel.SetActive(false);
+    }
     //当一个单位死亡时，会调用该函数
     public void RemoveStatsPanel(Unit unit){
         //如果当前死亡的单位正好就是打开状态栏的单位，则关闭状态栏
