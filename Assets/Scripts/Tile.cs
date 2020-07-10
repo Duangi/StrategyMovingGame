@@ -101,8 +101,15 @@ public class Tile : MonoBehaviour
         else return false;
     }
     public void OnMouseDown(){
+        if(GameManager.instance.selectedUnit!= null){
+            Debug.Log("x="+ transform.position.x);
+            Debug.Log("y="+ transform.position.y);
+            Debug.Log("unit x="+ GameManager.instance.selectedUnit.transform.position.x);
+            Debug.Log("unit y="+ GameManager.instance.selectedUnit.transform.position.y);
 
+        }
         
+
         if(GameManager.instance.selectedUnit != null){
             if(!GameManager.instance.selectedUnit.hasMoved && canWalk){
                 GameManager.instance.selectedUnit.Move(this.transform);

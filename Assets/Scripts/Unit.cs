@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     public bool selected = false;//表示当前单位是否被选中
 
     public bool hasMoved = false;//表示当前回合当前单位是否移动过
+    public bool isMoving;
 
     public int playerNumber;//表示当前unit是蓝色方/红色方
 
@@ -57,9 +58,8 @@ public class Unit : MonoBehaviour
             ShowWalkableTiles();
         }
 
-        //被攻击
 
-        //
+        //攻击敌人
         Collider2D col  = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition),0.15f);
         Unit unit  = col.GetComponent<Unit>();
         if(GameManager.instance.selectedUnit != null){
@@ -114,6 +114,9 @@ public class Unit : MonoBehaviour
             GameManager.instance.RemoveStatsPanel(this);
         }
         GameManager.instance.UpdateStatsPanel();
+
+        //攻击完成之后立马刷新可以移动的位置
+        ShowWalkableTiles();
     }
     //king的血量更新之后，每次都会在ui画布上更新
     private void UpdateKingHealth(){
@@ -152,6 +155,7 @@ public class Unit : MonoBehaviour
 
         //切换running状态
         GetComponent<Animator>().SetBool("isRunning",true);
+        isMoving = true;
 
         //开始移动时，将stats暂时先关闭，移动完成之后再打开
         GameManager.instance.DisableStatsPanel();
@@ -176,6 +180,7 @@ public class Unit : MonoBehaviour
                 GameManager.instance.ToggleStatsPanel(this);
             }
         }
+        isMoving = false;
         
         
         ResetTiles();

@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text attackDamageText;
     [SerializeField] private Text defenseDamageText;
 
+    [SerializeField] private Button TurnButton;
     private void Awake(){
         //如果一开始GameManager未赋值，则将该gameObject作为manager
         if(instance == null){
@@ -65,6 +66,12 @@ public class GameManager : MonoBehaviour
 
         //如果有被选择的角色，高亮框显示，修改为适应的颜色，并跟随角色移动
         if(selectedUnit != null){
+            //当有角色正在移动的时候，直接点击切换切换回合按钮会导致奇怪的bug，因此设定当角色正在移动时，不能切换回合
+            if(selectedUnit.isMoving){
+                TurnButton.interactable = false;
+            }else{
+                TurnButton.interactable = true;
+            }
             selectedUnitSquare.SetActive(true);
             selectedUnitSquare.GetComponent<SpriteRenderer>().color = selectedUnit.squareColor;
             selectedUnitSquare.transform.position = selectedUnit.transform.position;
@@ -72,6 +79,8 @@ public class GameManager : MonoBehaviour
         else {
             selectedUnitSquare.SetActive(false);
         }
+
+        
     }
     //当玩家右键点击单位时，该函数会被调用
     //功能：右键点击该单位时，
