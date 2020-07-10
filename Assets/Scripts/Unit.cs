@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(HoverEffect))]
 public class Unit : MonoBehaviour
 {
-    [SerializeField] [Range(1,7)] 
+    [SerializeField] [Range(0,7)] 
     private int moveRange = 3;
 
     [SerializeField] private float moveSpeed = 3;
