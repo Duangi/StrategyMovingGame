@@ -67,7 +67,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1109342477
+  m_SortingLayerID: 88000007
   m_SortingLayer: 2
   m_SortingOrder: -20
   m_Sprite: {fileID: -8555599076299583737, guid: 9cec50a818f283542b3d0ff3e168ab27,
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -20
   m_Sprite: {fileID: -498099194877666224, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -235,7 +235,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1159910623790813766, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -317,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 5297565722167020378, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -399,7 +399,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 9e9213b7c15f6af41b2fc7472f6e1590, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -480,7 +480,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -7616357609731271642, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -562,7 +562,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -20
   m_Sprite: {fileID: -1129723099738852518, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -644,7 +644,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -10
   m_Sprite: {fileID: 4216525731966431225, guid: 8538621227b6c1b43bf01fc6c4b01ffa,
     type: 3}
@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 2907582074119125492}
   - component: {fileID: 806027190}
   - component: {fileID: 5869919609911463278}
+  - component: {fileID: 2873763173631854476}
   m_Layer: 9
   m_Name: BlueSoldier
   m_TagString: Untagged
@@ -729,7 +730,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14869213, y: 0.44621372}
+  m_Offset: {x: 0.00374645, y: 0.15610218}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -740,7 +741,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0904126, y: 2.2229576}
+  m_Size: {x: 2.7668257, y: 2.8031807}
   m_EdgeRadius: 0
 --- !u!114 &806027190
 MonoBehaviour:
@@ -758,7 +759,7 @@ MonoBehaviour:
   moveSpeed: 3
   selected: 0
   hasMoved: 0
-  playerNumber: 1
+  playerNumber: 2
   squareColor: {r: 0, g: 0, b: 1, a: 1}
   attackRange: 1
   hasAttacked: 0
@@ -768,6 +769,10 @@ MonoBehaviour:
   defenseDamage: 2
   armor: 1
   damageIcon: {fileID: 217652487, guid: f66f529792745244694f86d8b41be88a, type: 3}
+  deathEffect: {fileID: 7953367499307600658, guid: 786516a2b4c5324458231e6e08fa6d4f,
+    type: 3}
+  isKing: 0
+  kingHealth: {fileID: 0}
 --- !u!114 &5869919609911463278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,3 +786,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverAmount: 0.05
+--- !u!114 &2873763173631854476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043335270324029029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f1df55800db8b48ad1429bb1fdcd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 5

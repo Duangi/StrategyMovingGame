@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7287604917361279727}
   - component: {fileID: 8176324672243359691}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5639839706687174925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -2.29, z: 9.101203}
+  m_LocalPosition: {x: 0.08, y: -1.5999976, z: 9.101203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3547403454683742308}
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7098072395754262308, guid: e133ca44fd5dabe488dcca93ef229e63,
     type: 3}
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6499387300041336067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07999992, y: -0.19612885, z: 9.101203}
+  m_LocalPosition: {x: 0.07999992, y: 0.49387354, z: 9.101203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3547403454683742308}
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 5153016428005426923, guid: e133ca44fd5dabe488dcca93ef229e63,
     type: 3}
@@ -174,8 +174,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2068446263758516916}
   - component: {fileID: 4070274280975580159}
-  m_Layer: 0
-  m_Name: circles_1
+  m_Layer: 9
+  m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153377907198338594}
   m_LocalRotation: {x: 0.35600394, y: -0, z: -0, w: 0.9344845}
-  m_LocalPosition: {x: -0.08, y: -1.13, z: 9.084}
+  m_LocalPosition: {x: -0.08, y: -0.44, z: 9.084}
   m_LocalScale: {x: 1.6315018, y: 1.6315018, z: 0.24472529}
   m_Children: []
   m_Father: {fileID: 3547403454683742308}
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1109342477
+  m_SortingLayerID: 88000007
   m_SortingLayer: 2
   m_SortingOrder: -10
   m_Sprite: {fileID: -8555599076299583737, guid: 9cec50a818f283542b3d0ff3e168ab27,
@@ -256,7 +256,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3547403454683742308}
   - component: {fileID: 3025119633322965666}
-  m_Layer: 0
+  - component: {fileID: 1846075574}
+  - component: {fileID: 1846075573}
+  - component: {fileID: 1846075577}
+  m_Layer: 9
   m_Name: BlueKing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,6 +303,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1846075574
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517431361840189038}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0752759, y: -0.08605385}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.8717375, y: 4.848634}
+  m_EdgeRadius: 0
+--- !u!114 &1846075573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517431361840189038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd33f6b9d0e44a47a7962ab5ab1c718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRange: 3
+  moveSpeed: 3
+  selected: 0
+  hasMoved: 0
+  playerNumber: 2
+  squareColor: {r: 0, g: 0, b: 1, a: 1}
+  attackRange: 1
+  hasAttacked: 0
+  weaponIcon: {fileID: 8534502605026518638}
+  health: 5
+  attackDamage: 3
+  defenseDamage: 3
+  armor: 1
+  damageIcon: {fileID: 217652487, guid: f66f529792745244694f86d8b41be88a, type: 3}
+  deathEffect: {fileID: 7953367499307600658, guid: 786516a2b4c5324458231e6e08fa6d4f,
+    type: 3}
+  isKing: 1
+  kingHealth: {fileID: 0}
+--- !u!114 &1846075577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517431361840189038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc40cc21931f53a4da77f75cbe297857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverAmount: 0.05
 --- !u!1 &8534502605026518638
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,13 +382,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4613486218152960361}
   - component: {fileID: 6489184852828834055}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4613486218152960361
 Transform:
   m_ObjectHideFlags: 0
@@ -325,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8534502605026518638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.048, y: 0.306, z: 0}
+  m_LocalPosition: {x: 0.048, y: 0.9960023, z: 0}
   m_LocalScale: {x: 0.80442, y: 0.80442, z: 5.3628}
   m_Children: []
   m_Father: {fileID: 3547403454683742308}
@@ -368,7 +440,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1109342477
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 9e9213b7c15f6af41b2fc7472f6e1590, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(HoverEffect))]
 public class Unit : MonoBehaviour
@@ -33,8 +34,13 @@ public class Unit : MonoBehaviour
     public DamageIcon damageIcon;
     public GameObject deathEffect;
     private Animator camAnim;
+
+    //king的血量
+    [SerializeField] private bool isKing;
+    [SerializeField] private Text kingHealth;
     private void Start(){
         camAnim = Camera.main.GetComponent<Animator>();
+        UpdateKingHealth();
     }
 
     private void OnMouseDown(){
@@ -72,29 +78,47 @@ public class Unit : MonoBehaviour
         int enemyDamage = attackDamage - enemy.armor;
 
         int myDamage = enemy.defenseDamage - armor;
-
+        
+        //对敌人造成伤害
         if(enemyDamage >= 1){
             DamageIcon instance = Instantiate(damageIcon, enemy.transform.position, Quaternion.identity);
             instance.Setup(enemyDamage);
             enemy.health -= enemyDamage;
+            enemy.UpdateKingHealth();
         }
-
-        if(myDamage >= 1){
+        
+        //反伤（如果是弓箭手，敌人距离超过1，则不会受到反伤）
+        float distX = Mathf.Abs(transform.position.x - enemy.transform.position.x);
+        float distY = Mathf.Abs(transform.position.y - enemy.transform.position.y);
+        if(this.tag == "Archer" && ((distX+distY)>1) ){
+            
+        }
+        else if(myDamage >= 1){
             DamageIcon instance = Instantiate(damageIcon, transform.position, Quaternion.identity);
             instance.Setup(myDamage);
             health -= myDamage;
+            UpdateKingHealth();
         }
 
         if(enemy.health <=0){
             Instantiate(deathEffect,enemy.transform.position,Quaternion.identity);
             Destroy(enemy.gameObject);
             ShowWalkableTiles();
+            GameManager.instance.RemoveStatsPanel(enemy);
         }
 
         if(health<=0){
             Instantiate(deathEffect,transform.position,Quaternion.identity);
             ResetTiles();
             Destroy(gameObject);
+            GameManager.instance.RemoveStatsPanel(this);
+        }
+        GameManager.instance.UpdateStatsPanel();
+    }
+    //king的血量更新之后，每次都会在ui画布上更新
+    private void UpdateKingHealth(){
+        if(isKing){
+            kingHealth.text = health.ToString();
         }
     }
     private void ShowWalkableTiles(){
@@ -125,7 +149,12 @@ public class Unit : MonoBehaviour
     }
 
     IEnumerator MoveCo(Transform _transform){
+
+        //切换running状态
         GetComponent<Animator>().SetBool("isRunning",true);
+
+        //开始移动时，将stats暂时先关闭，移动完成之后再打开
+        GameManager.instance.DisableStatsPanel();
 
         while(transform.position.x != _transform.position.x){
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(_transform.position.x,transform.position.y),moveSpeed * Time.deltaTime);
@@ -137,11 +166,18 @@ public class Unit : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,_transform.position.y),moveSpeed * Time.deltaTime);
             yield return null;
         }
+        //run动画结束
         GetComponent<Animator>().SetBool("isRunning",false);
+
+        //重新打开状态栏
+        GameManager.instance.ToggleStatsPanel(this);
+
         ResetTiles();
         ShowWalkableTiles();
         ResetWeaponIcon();
         GetEnemies();
+
+        
     }
 
     public void ResetTiles(){
@@ -170,6 +206,12 @@ public class Unit : MonoBehaviour
     public void ResetWeaponIcon(){
         foreach(Unit unit in FindObjectsOfType<Unit>()){
             unit.weaponIcon.SetActive(false);
+        }
+    }
+
+    private void OnMouseOver(){
+        if(Input.GetMouseButtonDown(1)){
+            GameManager.instance.ToggleStatsPanel(this);
         }
     }
 }
