@@ -170,7 +170,7 @@ public class Unit : MonoBehaviour
     IEnumerator MoveCo(Transform _transform){
 
         //切换running状态
-        GetComponent<Animator>().SetBool("isRunning",true);
+        //GetComponent<Animator>().SetBool("isRunning",true);
         isMoving = true;
 
         //开始移动时，将stats暂时先关闭，移动完成之后再打开
@@ -187,7 +187,7 @@ public class Unit : MonoBehaviour
             yield return null;
         }
         //run动画结束
-        GetComponent<Animator>().SetBool("isRunning",false);
+        //GetComponent<Animator>().SetBool("isRunning",false);
 
         
         //重新打开状态栏

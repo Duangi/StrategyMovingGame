@@ -1158,8 +1158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &79395894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1593,8 +1593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &112129600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4375,6 +4375,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c23441e1d5db0a4da88720701d56dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &412242604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412242606}
+  - component: {fileID: 412242605}
+  m_Layer: 0
+  m_Name: ConnectToServer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &412242605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412242604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2093522f639604a4784c5046b75de898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &412242606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412242604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1691233, y: 0.6872622, z: 9.803653}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &415909146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8098,8 +8141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &812295001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8497,8 +8540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &834831297
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11224,8 +11267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &1115239449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11516,8 +11559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &1138659221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17904,8 +17947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &1714973584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20639,8 +20682,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &2081665014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21460,8 +21503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 0.2
   maxSpeed: 0.5
-  minX: -11
-  maxX: 11
+  minX: -12.5
+  maxX: 12.5
 --- !u!212 &2133139998
 SpriteRenderer:
   m_ObjectHideFlags: 0
