@@ -51,27 +51,30 @@ public class Unit : MonoBehaviour
     }
 
     private void OnMouseDown(){
-        //初始化攻击指示器
-        ResetWeaponIcon();
+        //只有当前是你的回合，才能点击unit产生反应
+        if(GameManager.instance.myPlayer == GameManager.instance.playerTurn){
+            //初始化攻击指示器
+            ResetWeaponIcon();
+            
+            if(playerNumber == GameManager.instance.playerTurn){
+                GameManager.instance.selectedUnit = this;
+                selected = true;
+                audioSource.Play();
+                ResetTiles();
 
-        if(playerNumber == GameManager.instance.playerTurn){
-            GameManager.instance.selectedUnit = this;
-            selected = true;
-            audioSource.Play();
-            ResetTiles();
-
-            GetEnemies();
-            //如果已经移动过了，就不能显示能移动的tile
-            ShowWalkableTiles();
-        }
+                GetEnemies();
+                //如果已经移动过了，就不能显示能移动的tile
+                ShowWalkableTiles();
+            }
 
 
-        //攻击敌人
-        Collider2D col  = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition),0.15f);
-        Unit unit  = col.GetComponent<Unit>();
-        if(GameManager.instance.selectedUnit != null){
-            if(GameManager.instance.selectedUnit.enemiesInRange.Contains(unit) && GameManager.instance.selectedUnit.hasAttacked == false){
-                GameManager.instance.selectedUnit.Attack(unit);
+            //攻击敌人
+            Collider2D col  = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition),0.15f);
+            Unit unit  = col.GetComponent<Unit>();
+            if(GameManager.instance.selectedUnit != null){
+                if(GameManager.instance.selectedUnit.enemiesInRange.Contains(unit) && GameManager.instance.selectedUnit.hasAttacked == false){
+                    GameManager.instance.selectedUnit.Attack(unit);
+                }
             }
         }
     }
@@ -166,8 +169,55 @@ public class Unit : MonoBehaviour
         StartCoroutine(MoveCo(_transform));
         hasMoved = true;
     }
+    public void Move(Vector2 position){
+        StartCoroutine(MoveCo(position));
+        hasMoved = true;
+    }
+    IEnumerator MoveCo(Vector2 position){
 
+        //切换running状态
+        //GetComponent<Animator>().SetBool("isRunning",true);
+        isMoving = true;
+
+        //开始移动时，将stats暂时先关闭，移动完成之后再打开
+        GameManager.instance.DisableStatsPanel();
+
+        while(transform.position.x != position.x){
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(position.x,transform.position.y),moveSpeed * Time.deltaTime);
+            //yield return null;
+            yield return new WaitForSeconds(0);
+        }
+
+        while(transform.position.y != position.y){
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,position.y),moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        //run动画结束
+        //GetComponent<Animator>().SetBool("isRunning",false);
+
+        
+        //重新打开状态栏
+        if(GameManager.instance.viewedUnit != null){
+            if(GameManager.instance.viewedUnit.Equals(this)){
+                GameManager.instance.ToggleStatsPanel(this);
+            }
+        }
+        isMoving = false;
+        
+        
+        ResetTiles();
+        ShowWalkableTiles();
+        ResetWeaponIcon();
+        GetEnemies();
+
+        
+    }
     IEnumerator MoveCo(Transform _transform){
+        //记录初始位置，然后直接给服务器发送移动消息
+        string msg = "position,"+transform.position.x+","+transform.position.y+","+_transform.position.x+","+_transform.position.y;
+        
+        FindObjectOfType<Client>().sendMsgFromGame(msg);
+
 
         //切换running状态
         //GetComponent<Animator>().SetBool("isRunning",true);

@@ -1204,7 +1204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2093522f639604a4784c5046b75de898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   text: {fileID: 1603258038}
+  message: connect,1
   messages: []
 --- !u!4 &1752079977
 Transform:

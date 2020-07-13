@@ -13,11 +13,13 @@ using System.Threading;
 
 
 
+
 public class Client : MonoBehaviour
 {
     private Socket socket;
     private byte[] data;
     private bool connected = false;
+    [SerializeField] private UnityEngine.UI.Button button;
     [SerializeField] private Text text;
     
     //定义ip和端口号
@@ -28,14 +30,19 @@ public class Client : MonoBehaviour
     private Semaphore sendSemaphore = new Semaphore(0,1);
     private Semaphore receiveSemaphore = new Semaphore(0,1);
 
+    public string message = "connect,1";
     public List<String> messages = new List<string>();
 
     public Semaphore messagesChange = new Semaphore(0,1);//对消息List的锁，主线程和子线程有且仅有一个能读写这个数据。
+
+    
+    
     private void Start(){
         data = new byte[1024];
         ThreadStart receive = new ThreadStart(receiveMessageFromServer);
         Thread r = new Thread(receive);
         r.Start();
+
     }
     private String str= "";
 
@@ -62,7 +69,25 @@ public class Client : MonoBehaviour
     public void sendMessageToServer(){
         sendSemaphore.WaitOne();
         try{
-            string msg = "connect,1";
+            byte[] buffer = new byte[1024];
+            buffer = Encoding.UTF8.GetBytes(message);
+            socket.Send(buffer);
+            Debug.Log(message);
+        }catch{
+
+        }
+        finally{
+            sendSemaphore.Release();
+        }
+    }
+    public void sendMessageThread(string msg){
+        ThreadStart send = new ThreadStart(sendMessageToServer);
+        Thread s = new Thread(send);
+        s.Start();
+    }
+    public void sendMessageToServer(string msg){
+        sendSemaphore.WaitOne();
+        try{
             byte[] buffer = new byte[1024];
             buffer = Encoding.UTF8.GetBytes(msg);
             socket.Send(buffer);
@@ -80,12 +105,19 @@ public class Client : MonoBehaviour
             socket.Receive(data);
             //string str = System.Text.Encoding.Default.GetString ( byteArray );
             string s = System.Text.Encoding.Default.GetString(data);
+            
             //Debug.Log(s);
-            Debug.Log("1");
             str = s;
+            string[] msg = s.Split(',');
+            if(msg[0].Equals("player")){
+                str = "连接成功，你的角色为player"+msg[1];
+            }
+            //当该线程收到从服务器转发的数据，立马锁住messages，将消息保存好，立马释放锁
+            messagesChange.WaitOne();
             messages.Add(s);
+            messagesChange.Release();
         }
-        receiveSemaphore.Release();
+        //receiveSemaphore.Release();
     }
 
     public void connectToServer(){
@@ -107,6 +139,7 @@ public class Client : MonoBehaviour
             }
             receiveSemaphore.Release();
             sendSemaphore.Release();
+            messagesChange.Release();
         }
         }
     }
@@ -114,5 +147,10 @@ public class Client : MonoBehaviour
     public void startGame(){
         SceneManager.LoadScene("Main");
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void sendMsgFromGame(string msg){
+        message = msg;
+        sendButtonClicked();
     }
 }

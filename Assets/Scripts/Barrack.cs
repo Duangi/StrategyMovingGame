@@ -4,23 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Barrack : MonoBehaviour
 {
-    [SerializeField]private Button player1ToggleButton;
-    [SerializeField]private Button player2ToggleButton;
+    [HideInInspector]public Button player1ToggleButton;
+    [HideInInspector]public Button player2ToggleButton;
     [SerializeField]private GameObject player1Menu;
     [SerializeField]private GameObject player2Menu;
 
     private bool isPlanting;//正在种小兵
+    private void Start(){
+        CloseMenu();
+        player1ToggleButton.interactable = false;
+        player2ToggleButton.interactable = false;
+    }
     private void Update(){
-        if (GameManager.instance.playerTurn == 1){
-            player1ToggleButton.interactable = true;
-            player2ToggleButton.interactable = false;
+        // if (GameManager.instance.playerTurn == 1){
+        //     player1ToggleButton.interactable = true;
+        //     player2ToggleButton.interactable = false;
 
-        }
-        else if(GameManager.instance.playerTurn == 2){
+        // }
+        // else if(GameManager.instance.playerTurn == 2){
+        //     player1ToggleButton.interactable = false;
+        //     player2ToggleButton.interactable = true;
+        // }
+        if(GameManager.instance.playerTurn==GameManager.instance.myPlayer){
+            if(GameManager.instance.myPlayer==1){
+                player1ToggleButton.interactable = true;
+            }
+            else {
+                player2ToggleButton.interactable = true;
+            }
+        }else{
             player1ToggleButton.interactable = false;
-            player2ToggleButton.interactable = true;
+            player2ToggleButton.interactable = false;
         }
-
         
         if(isPlanting){
             //正在决定的时候，可以按下右键取消

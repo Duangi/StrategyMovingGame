@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text defenseDamageText;
 
     [SerializeField] private Button TurnButton;
+
+    [HideInInspector]public int myPlayer;//联网专用：表示当前玩家是哪一方
+    private List<string> messages;
+
+    [SerializeField]private Text a;
+    [SerializeField]private Text b;
+    
     private void Awake(){
         //如果一开始GameManager未赋值，则将该gameObject作为manager
         if(instance == null){
@@ -64,8 +71,11 @@ public class GameManager : MonoBehaviour
     private void Start(){
         playerIndicator.sprite = player1Indicator; 
         GetGoldIncome(1);
+
         UpdateGoldText();
         GetComponent<Barrack>().CloseMenu();
+
+        messages = FindObjectOfType<Client>().messages;
     }
     private void Update(){
 
@@ -85,7 +95,16 @@ public class GameManager : MonoBehaviour
             selectedUnitSquare.SetActive(false);
         }
 
-        
+        messagesHandler();
+        //只有当前玩家可以按动回合结束按钮
+        if(myPlayer == playerTurn){
+            TurnButton.interactable = true;
+        }        
+        else{
+            TurnButton.interactable = false;
+        }
+        a.text = myPlayer.ToString();
+        b.text = playerTurn.ToString();
     }
     //当玩家右键点击单位时，该函数会被调用
     //功能：右键点击该单位时，
@@ -151,13 +170,24 @@ public class GameManager : MonoBehaviour
     }
     public void EndTurn(){
 
+        // if(myPlayer==1){
+        //     playerTurn = 2;
+        // }
+        // else{
+        //     playerTurn = 1;
+        // }
         if(playerTurn == 1){
+            Debug.Log("playerTurn=="+playerTurn);
             playerIndicator.sprite = player2Indicator;
             playerTurn = 2;
         }
         else if (playerTurn == 2){
+            Debug.Log("playerTurn=="+playerTurn);
             playerIndicator.sprite = player1Indicator;
             playerTurn = 1;
+        }
+        else{
+            Debug.Log("和1/2都不等??");
         }
 
         GetGoldIncome(playerTurn);
@@ -180,5 +210,72 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //该函数将从服务器端传来的消息进行处理
+    public void messagesHandler(){
+        if(messages!=null){
+            //FindObjectOfType<Client>().messagesChange.WaitOne();
+            for(int i=0;i<messages.Count;i++){
+                //先将string用逗号分割
+                string[] s = messages[i].Split(',');
+                switch(s[0]){
+                    case "position":{
+                        Vector2 pos1 = new Vector2(int.Parse(s[1]),int.Parse(s[2]));
+                        Vector2 pos2 = new Vector2(int.Parse(s[3]),int.Parse(s[4]));
+
+                        //检测处于pos1位置的单位，将其移动到位置2
+                        Collider2D col  = Physics2D.OverlapCircle(pos1,0.15f);
+                        Unit unit  = col.GetComponent<Unit>();
+                        unit.Move(pos2);
+                        messages.Remove(messages[i]);
+                        break;
+                    }
+                    case "player":{
+                        int t = int.Parse(s[1]);
+                        switch(t){
+                            case 1:{
+                                myPlayer = 1;
+                                Debug.Log("myplayer="+myPlayer);
+                                Debug.Log("playerTurn="+playerTurn);
+                                break;
+                            }
+                            case 2:{
+                                Debug.Log("myplayer="+myPlayer);
+                                Debug.Log("playerTurn="+playerTurn);
+                                myPlayer = 2;
+                                break;
+                            }
+                            default:{
+                                Debug.Log("wrong "+s[1]);
+                                break;
+                            }
+                        }
+                        messages.Remove(messages[i]);
+                        break;
+                    }
+                    default: messages.Remove(messages[i]);break;
+                }
+            }
+            //FindObjectOfType<Client>().messagesChange.Release();
+        }
+    }
+
+    // public void UpdateOperation(){
+    //     if(myPlayer == 1){
+    //         EnableOperation(1);
+    //         //DisableOperation
+    //     }
+    // }
+
+    //当切换回合时
+    public void EnableOperation(int player){
+
+    }
+    //1.从游戏一开始，就禁用所有可以对对手造成影响的操作
+    //2.当切换到对面回合时，暂时禁用自己的操作
+    public void DisableOperation(int player){
+        GetComponent<Barrack>().CloseMenu();
+        
     }
 }
