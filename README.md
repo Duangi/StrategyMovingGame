@@ -13,33 +13,33 @@ A game demo made with unity
 
 ## 界面展示
 
-![9fd6e23b-78a7-42b2-8974-a2a4104ee753](D:\Material\Project\unity\StategyGameMoving\README.assets\9fd6e23b-78a7-42b2-8974-a2a4104ee753.gif)
+![界面展示](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E7%95%8C%E9%9D%A2%E5%B1%95%E7%A4%BA.gif?raw=true)
 
 
 
 ## 角色移动
 
-![3df11ce6-afc5-4ea1-aa93-2fac7fa0ae46](D:\Material\Project\unity\StategyGameMoving\README.assets\3df11ce6-afc5-4ea1-aa93-2fac7fa0ae46.gif)
+![角色移动](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8.gif?raw=true)
 
 点击需要移动的棋子，可以移动到的格子会暂时变成灰色，再点击需要移动到的格子，棋子会自动移动到对应的位置。
 
 ## 生成棋子
 
-![9feb43a3-3dd5-4b85-9c46-943fde7d8bb5](D:\Material\Project\unity\StategyGameMoving\README.assets\9feb43a3-3dd5-4b85-9c46-943fde7d8bb5.gif)
+![生成棋子](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E7%94%9F%E6%88%90%E6%A3%8B%E5%AD%90.gif?raw=true)
 
 ## 切换回合
 
-![b4fa0bf6-0e70-4fc6-b93c-5b3b66c4c45e](D:\Material\Project\unity\StategyGameMoving\README.assets\b4fa0bf6-0e70-4fc6-b93c-5b3b66c4c45e.gif)
+![切换回合](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E5%88%87%E6%8D%A2%E5%9B%9E%E5%90%88.gif?raw=true)
 
 ## 攻击动画
 
-![8fea75a5-3771-4c21-86b7-5c2f356d91c9](D:\Material\Project\unity\StategyGameMoving\README.assets\8fea75a5-3771-4c21-86b7-5c2f356d91c9.gif)
+![攻击动画](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E6%94%BB%E5%87%BB%E5%8A%A8%E7%94%BB.gif?raw=true)
 
 ## 查看属性
 
 右键点击棋子可以查看属性，鼠标点击其他地方状态栏会消失
 
-![image-20210313231508867](D:\Material\Project\unity\StategyGameMoving\README.assets\image-20210313231508867.png)
+![查看属性](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7.png?raw=true)
 
 左上角为当前血量
 
@@ -51,7 +51,7 @@ A game demo made with unity
 
 
 
-![b2bce058-6988-4f49-9103-80ef591947da](D:\Material\Project\unity\StategyGameMoving\README.assets\b2bce058-6988-4f49-9103-80ef591947da.gif)
+![查看属性](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7.gif?raw=true)
 
 
 
@@ -59,11 +59,11 @@ A game demo made with unity
 
 某一方的king死亡则游戏结束
 
-![2c8280df-2949-47ba-b3aa-fc08990ee50c](D:\Material\Project\unity\StategyGameMoving\README.assets\2c8280df-2949-47ba-b3aa-fc08990ee50c.gif)
+![游戏结束](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9D%9F.gif?raw=true)
 
 ## 联网功能
 
-![image-20210313185504225](D:\Material\Project\unity\StategyGameMoving\README.assets\image-20210313185504225.png)
+![联网功能](https://github.com/Duangi/StrategyMovingGame/blob/master/README.assets/%E8%81%94%E7%BD%91%E5%8A%9F%E8%83%BD.png?raw=true)
 
 一个很简陋的开始界面
 
