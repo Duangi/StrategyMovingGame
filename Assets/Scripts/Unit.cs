@@ -74,12 +74,14 @@ public class Unit : MonoBehaviour
             if(GameManager.instance.selectedUnit != null){
                 if(GameManager.instance.selectedUnit.enemiesInRange.Contains(unit) && GameManager.instance.selectedUnit.hasAttacked == false){
                     GameManager.instance.selectedUnit.Attack(unit);
+                    string temp = "attack," + FindObjectOfType<Client>().matchNumber +","+ GameManager.instance.selectedUnit.transform.position.x +","+ GameManager.instance.selectedUnit.transform.position.y+","+unit.transform.position.x+","+unit.transform.position.y+",";
+                    FindObjectOfType<Client>().sendMsgFromGame(temp);
                 }
             }
         }
     }
 
-    private void Attack(Unit enemy){
+    public void Attack(Unit enemy){
         
         camAnim.SetTrigger("shake");
         
@@ -88,6 +90,7 @@ public class Unit : MonoBehaviour
         int enemyDamage = attackDamage - enemy.armor;
 
         int myDamage = enemy.defenseDamage - armor;
+        
         
         //对敌人造成伤害
         if(enemyDamage >= 1){
@@ -136,6 +139,8 @@ public class Unit : MonoBehaviour
 
         //攻击完成之后立马刷新可以移动的位置
         ShowWalkableTiles();
+
+        ResetWeaponIcon();
     }
     //king的血量更新之后，每次都会在ui画布上更新
     private void UpdateKingHealth(){
@@ -214,7 +219,7 @@ public class Unit : MonoBehaviour
     }
     IEnumerator MoveCo(Transform _transform){
         //记录初始位置，然后直接给服务器发送移动消息
-        string msg = "position,"+transform.position.x+","+transform.position.y+","+_transform.position.x+","+_transform.position.y;
+        string msg = "position,"+FindObjectOfType<Client>().matchNumber+","+transform.position.x+","+transform.position.y+","+_transform.position.x+","+_transform.position.y+",";
         
         FindObjectOfType<Client>().sendMsgFromGame(msg);
 

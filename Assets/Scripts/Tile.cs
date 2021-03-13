@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
@@ -20,6 +20,11 @@ public class Tile : MonoBehaviour
     public Color creatableColor;//当可以创建单位时，tile会变颜色
     public bool isCreatable;
     // Start is called before the first frame update
+    public Text A;
+
+    public Text B;
+
+
     void Start()
     {
         //为了获取每个tile的sprite组件
@@ -108,9 +113,11 @@ public class Tile : MonoBehaviour
         
         if(isCreatable){
             BarrackItem item = Instantiate(GameManager.instance.purchasedItem, new Vector2(transform.position.x,transform.position.y),Quaternion.identity);
-
+            string t = "build"+","+FindObjectOfType<Client>().matchNumber+ ","+ item.GetComponent<BarrackItem>().index+","+ transform.position.x +","+transform.position.y+",";
+            FindObjectOfType<Client>().sendMsgFromGame(t);
+            //A.text = t;
             GameManager.instance.ResetTiles();
-            //
+
             Unit unit = item.GetComponent<Unit>();
             if(unit != null){
                 unit.hasMoved = true;
@@ -119,10 +126,14 @@ public class Tile : MonoBehaviour
 
             //扣钱
             if(GameManager.instance.playerTurn == 1){
+                Debug.Log("GameManager.instance.playerTurn == "+GameManager.instance.playerTurn);
                 GameManager.instance.player1Gold -= GameManager.instance.purchasedItem.cost;
             }
             else if(GameManager.instance.playerTurn == 2){
+                Debug.Log("GameManager.instance.playerTurn == "+GameManager.instance.playerTurn);
                 GameManager.instance.player2Gold -= GameManager.instance.purchasedItem.cost;
+            }else{
+                Debug.Log("wrong"+GameManager.instance.playerTurn);
             }
 
             GameManager.instance.UpdateGoldText();

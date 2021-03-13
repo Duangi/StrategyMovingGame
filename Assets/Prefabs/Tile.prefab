@@ -117,6 +117,8 @@ MonoBehaviour:
   highLightColor: {r: 0.41568628, g: 0.41568628, b: 0.41568628, a: 1}
   creatableColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   isCreatable: 0
+  A: {fileID: 0}
+  B: {fileID: 0}
 --- !u!61 &3672608730891453242
 BoxCollider2D:
   m_ObjectHideFlags: 0

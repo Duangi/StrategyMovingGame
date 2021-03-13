@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 8
+  index: 3
 --- !u!61 &321785459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
     type: 3}
   isKing: 0
   kingHealth: {fileID: 0}
-  audioSource: {fileID: 0}
+  WinFlag: {fileID: 0}
 --- !u!114 &321785458
 MonoBehaviour:
   m_ObjectHideFlags: 0

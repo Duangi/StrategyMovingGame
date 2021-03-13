@@ -5,5 +5,5 @@ using UnityEngine.UI;
 public class BarrackItem : MonoBehaviour
 {
     public int cost;
-    
+    public int index;
 }

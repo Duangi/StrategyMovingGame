@@ -49,6 +49,7 @@ public class Barrack : MonoBehaviour
                 GameManager.instance.purchasedItem = null;
 
                 GameManager.instance.ResetTiles();
+                isPlanting = false;
             }
         }
     }
@@ -86,6 +87,7 @@ public class Barrack : MonoBehaviour
         }
         //将可以放置小兵的地方设置为高亮
         GetCreatableTiles();
+        isPlanting = false;
     }
     void GetCreatableTiles(){
         foreach (Tile tile in FindObjectsOfType<Tile>()){

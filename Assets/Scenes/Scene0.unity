@@ -316,9 +316,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1603258037}
   - {fileID: 1427522190}
   - {fileID: 1729701879}
-  - {fileID: 1603258037}
   - {fileID: 709855141}
   m_Father: {fileID: 590340866}
   m_RootOrder: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u53D1\u9001\u4FE1\u606F"
+  m_Text: "\u5BFB\u627E\u5BF9\u624B"
 --- !u!222 &979501506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 1323237871}
   - component: {fileID: 1323237870}
   - component: {fileID: 1323237869}
+  - component: {fileID: 1323237872}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -634,7 +635,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.4672481, g: 0.65241677, b: 0.9433962, a: 0}
+  m_BackGroundColor: {r: 0.7688679, g: 1, b: 0.90565956, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -681,6 +682,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323237872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323237868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20deeb59c0b7cea469ce3be738e8bad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427522189
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +726,7 @@ RectTransform:
   m_Children:
   - {fileID: 1692529815}
   m_Father: {fileID: 661140642}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -919,7 +932,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 661140642}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -958,7 +971,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1603258039
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1077,7 +1090,7 @@ RectTransform:
   m_Children:
   - {fileID: 979501504}
   m_Father: {fileID: 661140642}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1204,10 +1217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2093522f639604a4784c5046b75de898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  btnConnect: {fileID: 1427522191}
+  btnSend: {fileID: 1729701880}
   text: {fileID: 1603258038}
   message: connect,1
   messages: []
+  matchNumber: 1
 --- !u!4 &1752079977
 Transform:
   m_ObjectHideFlags: 0

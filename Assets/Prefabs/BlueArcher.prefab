@@ -530,7 +530,7 @@ MonoBehaviour:
     type: 3}
   isKing: 0
   kingHealth: {fileID: 0}
-  audioSource: {fileID: 0}
+  WinFlag: {fileID: 0}
 --- !u!114 &1791424767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 7
+  index: 2
 --- !u!82 &879347295
 AudioSource:
   m_ObjectHideFlags: 0

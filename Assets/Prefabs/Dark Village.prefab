@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 10
+  index: 4
 --- !u!114 &2028037586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +172,7 @@ MonoBehaviour:
   moveSpeed: 3
   selected: 0
   hasMoved: 0
+  isMoving: 0
   playerNumber: 1
   squareColor: {r: 1, g: 0, b: 0, a: 1}
   attackRange: 0
@@ -185,6 +187,7 @@ MonoBehaviour:
     type: 3}
   isKing: 0
   kingHealth: {fileID: 0}
+  WinFlag: {fileID: 0}
 --- !u!1 &766467580902914894
 GameObject:
   m_ObjectHideFlags: 0
